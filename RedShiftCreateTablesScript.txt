@@ -1,0 +1,38 @@
+-- 1. Publishers dimension table
+CREATE TABLE publishers (
+    publisher_id INTEGER IDENTITY(1,1) PRIMARY KEY,
+    name VARCHAR(100) UNIQUE NOT NULL,
+    country CHAR(2)
+);
+
+-- 2. Games dimension table
+CREATE TABLE games (
+    game_id INTEGER IDENTITY(1,1) PRIMARY KEY,
+    title VARCHAR(200) UNIQUE NOT NULL,
+    publisher_id INTEGER REFERENCES publishers(publisher_id),
+    release_date DATE,
+    genre VARCHAR(50)
+);
+
+-- 3. Transactions fact table header
+CREATE TABLE transactions (
+    transaction_id CHAR(5) PRIMARY KEY,
+    txn_type VARCHAR(20),
+    txn_ts TIMESTAMP,
+    currency CHAR(3),
+    total_amount DECIMAL(10,2),
+    customer_ref VARCHAR(50)
+);
+
+-- 4. Transaction lines fact table (with distribution and sort keys for performance)
+CREATE TABLE transaction_lines (
+    transaction_id CHAR(5),
+    line_no INTEGER,
+    game_id INTEGER,
+    region VARCHAR(10),
+    platform VARCHAR(20),
+    gross_amount DECIMAL(10,2),
+    platform_fee DECIMAL(10,2),
+    net_amount DECIMAL(10,2),
+    PRIMARY KEY (transaction_id, line_no)
+);

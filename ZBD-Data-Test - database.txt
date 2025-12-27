@@ -1,0 +1,47 @@
+AWS Account
+
+Account ID: 831081046713
+
+User: sean
+
+Password: Hextall2713!!
+
+PostgreSQL RDS Instance
+
+Database: ZBD-Data-Test
+
+Master User: postgresadmin
+
+Master Password: HT3JdCwKHbPRasK82
+
+Region: us-east-2b
+
+VPC: vpc-0e23331eccaf5ae4b
+
+Endpoint & Connection Details:
+
+Endpoint: zbd-data-test.czuqqggywv1j.us-east-2.rds.amazonaws.com
+
+Port: 5432
+
+Connection Command (psql):
+psql \
+  -h zbd-data-test.czuqqggywv1j.us-east-2.rds.amazonaws.com \
+  -p 5432 \
+  -U postgresadmin \
+  -d postgres
+
+
+Redshift Serverless / Cluster
+
+Cluster Name: zbd-data-warehouse-test
+
+Cluster Type: ra3.large (cost-efficient option)
+
+Master User: redshiftadmin
+
+Master Password: RDSFIT3JdCwKHbPRasK82
+
+Workgroup: zbd-test-workgroup
+
+Database: zbd-data-warehouse-test
